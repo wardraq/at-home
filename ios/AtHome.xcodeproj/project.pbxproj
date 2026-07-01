@@ -1,0 +1,336 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		51A6D76A91AD4DE984029668 /* AtHomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F0D221A1434FCABE1A5080 /* AtHomeApp.swift */; };
+		FA14E1EED946400185F264BC /* PairingCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF648950DA37432DB68692B0 /* PairingCredentials.swift */; };
+		1E69063AF349473093DECEBE /* SyncStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DE5425930D4071AC1532A1 /* SyncStats.swift */; };
+		C86B017ACC8C4FF58265B6A9 /* UploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8D6867D0C14348B122B3B0 /* UploadTask.swift */; };
+		ED47364A09AE43ADA38F9622 /* DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AB74EE47394FD6B82F7706 /* DateFormatting.swift */; };
+		ACABCA1207E84E7790FD2A2C /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F9504EFD1407FB10292AC /* KeychainService.swift */; };
+		65DF071168D8419096CA107F /* SyncStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF65BE0BFE2D42FAA7352FA9 /* SyncStore.swift */; };
+		A5A12221D4944CABBF3A0531 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C669A003BAD14DE0B1E8A499 /* NetworkClient.swift */; };
+		7A75C576D2A94105AFE2E130 /* PhotoLibraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B50BF34DB674D03A1EB1F12 /* PhotoLibraryService.swift */; };
+		104FB8514C14436CBB259B81 /* SyncEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90ECA24EB472448D810F418D /* SyncEngine.swift */; };
+		D391ECE45A3443478FF5D7E4 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5CA61C03554928AD787B72 /* AppModel.swift */; };
+		BA6D947FADF4476E864E7BA8 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA6CD1E933E41139A1D255C /* RootView.swift */; };
+		E4E2D645FD7F45249CD5A5E3 /* UnpairedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CBE7DF2F034BB7A27BF9E2 /* UnpairedView.swift */; };
+		7B9B0FAF680F48FE8E620E1B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE5E82C0D554A3E8F9F4F53 /* HomeView.swift */; };
+		3E96F312B12A46DD89400F24 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74998181BAB4627BE0F06B2 /* SettingsView.swift */; };
+		1E0FB035ADD64A87981D988B /* QRScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29654142C1E44AC9396D443 /* QRScannerView.swift */; };
+		87F7EF5F4871460A803455BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43FAC225B0814023BDC8C8B7 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D253A1C2DC65470DADB3B85D /* AtHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1F0D221A1434FCABE1A5080 /* AtHomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtHomeApp.swift; sourceTree = "<group>"; };
+		BF648950DA37432DB68692B0 /* PairingCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingCredentials.swift; sourceTree = "<group>"; };
+		96DE5425930D4071AC1532A1 /* SyncStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncStats.swift; sourceTree = "<group>"; };
+		AD8D6867D0C14348B122B3B0 /* UploadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTask.swift; sourceTree = "<group>"; };
+		C8AB74EE47394FD6B82F7706 /* DateFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatting.swift; sourceTree = "<group>"; };
+		C51F9504EFD1407FB10292AC /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		EF65BE0BFE2D42FAA7352FA9 /* SyncStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncStore.swift; sourceTree = "<group>"; };
+		C669A003BAD14DE0B1E8A499 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		8B50BF34DB674D03A1EB1F12 /* PhotoLibraryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryService.swift; sourceTree = "<group>"; };
+		90ECA24EB472448D810F418D /* SyncEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncEngine.swift; sourceTree = "<group>"; };
+		0C5CA61C03554928AD787B72 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		BCA6CD1E933E41139A1D255C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		84CBE7DF2F034BB7A27BF9E2 /* UnpairedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnpairedView.swift; sourceTree = "<group>"; };
+		7EE5E82C0D554A3E8F9F4F53 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A74998181BAB4627BE0F06B2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B29654142C1E44AC9396D443 /* QRScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerView.swift; sourceTree = "<group>"; };
+		29050BC6B0D14CF7980A9083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43FAC225B0814023BDC8C8B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8FB277C7CD5F4689A88244B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0DAA6A7AC3074F94BF369907 = {
+			isa = PBXGroup;
+			children = (
+				8241EE055ABA4328BA20A7B9 /* AtHome */,
+				CF3538C94A584F4292003388 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CF3538C94A584F4292003388 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D253A1C2DC65470DADB3B85D /* AtHome.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		17CAA68A00FF4986B995D555 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BF648950DA37432DB68692B0 /* PairingCredentials.swift */,
+				96DE5425930D4071AC1532A1 /* SyncStats.swift */,
+				AD8D6867D0C14348B122B3B0 /* UploadTask.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B8EF74C7A5894A56BE2D748A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C8AB74EE47394FD6B82F7706 /* DateFormatting.swift */,
+				C51F9504EFD1407FB10292AC /* KeychainService.swift */,
+				EF65BE0BFE2D42FAA7352FA9 /* SyncStore.swift */,
+				C669A003BAD14DE0B1E8A499 /* NetworkClient.swift */,
+				8B50BF34DB674D03A1EB1F12 /* PhotoLibraryService.swift */,
+				90ECA24EB472448D810F418D /* SyncEngine.swift */,
+				0C5CA61C03554928AD787B72 /* AppModel.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6DA97D4F474B44A48BB12D10 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BCA6CD1E933E41139A1D255C /* RootView.swift */,
+				84CBE7DF2F034BB7A27BF9E2 /* UnpairedView.swift */,
+				7EE5E82C0D554A3E8F9F4F53 /* HomeView.swift */,
+				A74998181BAB4627BE0F06B2 /* SettingsView.swift */,
+				B29654142C1E44AC9396D443 /* QRScannerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		95F6F77630934F77A65109CA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				29050BC6B0D14CF7980A9083 /* Info.plist */,
+				43FAC225B0814023BDC8C8B7 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8241EE055ABA4328BA20A7B9 /* AtHome */ = {
+			isa = PBXGroup;
+			children = (
+				C1F0D221A1434FCABE1A5080 /* AtHomeApp.swift */,
+				17CAA68A00FF4986B995D555 /* Models */,
+				B8EF74C7A5894A56BE2D748A /* Services */,
+				6DA97D4F474B44A48BB12D10 /* Views */,
+				95F6F77630934F77A65109CA /* Resources */,
+			);
+			path = AtHome;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		65802889D8724AF18710E0D1 /* AtHome */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 079FBDBA73E14A41B944A656 /* Build configuration list for PBXNativeTarget "AtHome" */;
+			buildPhases = (
+				B45C4913BF63496998A388BF /* Sources */,
+				8FB277C7CD5F4689A88244B2 /* Frameworks */,
+				43CF6A46FDCF4E8C94E4BB30 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AtHome;
+			packageProductDependencies = (
+				2B60FF4A26BA4D788E206F31 /* GRDB */,
+			);
+			productName = AtHome;
+			productReference = D253A1C2DC65470DADB3B85D /* AtHome.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5DD205824212429ABF68659B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					65802889D8724AF18710E0D1 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = B1BC557AA7764E7D83C4E657 /* Build configuration list for PBXProject "AtHome" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = zh-Hans;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				zh-Hans,
+				Base,
+			);
+			mainGroup = 0DAA6A7AC3074F94BF369907;
+			packageReferences = (
+			);
+			productRefGroup = CF3538C94A584F4292003388 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				65802889D8724AF18710E0D1 /* AtHome */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		43CF6A46FDCF4E8C94E4BB30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87F7EF5F4871460A803455BD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B45C4913BF63496998A388BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51A6D76A91AD4DE984029668 /* AtHomeApp.swift in Sources */,
+				FA14E1EED946400185F264BC /* PairingCredentials.swift in Sources */,
+				1E69063AF349473093DECEBE /* SyncStats.swift in Sources */,
+				C86B017ACC8C4FF58265B6A9 /* UploadTask.swift in Sources */,
+				ED47364A09AE43ADA38F9622 /* DateFormatting.swift in Sources */,
+				ACABCA1207E84E7790FD2A2C /* KeychainService.swift in Sources */,
+				65DF071168D8419096CA107F /* SyncStore.swift in Sources */,
+				A5A12221D4944CABBF3A0531 /* NetworkClient.swift in Sources */,
+				7A75C576D2A94105AFE2E130 /* PhotoLibraryService.swift in Sources */,
+				104FB8514C14436CBB259B81 /* SyncEngine.swift in Sources */,
+				D391ECE45A3443478FF5D7E4 /* AppModel.swift in Sources */,
+				BA6D947FADF4476E864E7BA8 /* RootView.swift in Sources */,
+				E4E2D645FD7F45249CD5A5E3 /* UnpairedView.swift in Sources */,
+				7B9B0FAF680F48FE8E620E1B /* HomeView.swift in Sources */,
+				3E96F312B12A46DD89400F24 /* SettingsView.swift in Sources */,
+				1E0FB035ADD64A87981D988B /* QRScannerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+
+
+/* Begin XCBuildConfiguration section */
+		FD946FF4C4FC425881286446 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A2C704CAC1504C8E82AB3B37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7001917CE8C842CABCCE0F79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SWIFT_VERSION = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				TARGETED_DEVICE_FAMILY = "1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.0;
+				CURRENT_PROJECT_VERSION = 1;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.athome.app;
+				INFOPLIST_FILE = AtHome/Resources/Info.plist;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GENERATE_INFOPLIST_FILE = NO;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks");
+				ENABLE_PREVIEWS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+			};
+			name = Debug;
+		};
+		1F314AC1917D4A259B9A1335 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SWIFT_VERSION = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				TARGETED_DEVICE_FAMILY = "1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.0;
+				CURRENT_PROJECT_VERSION = 1;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.athome.app;
+				INFOPLIST_FILE = AtHome/Resources/Info.plist;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GENERATE_INFOPLIST_FILE = NO;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks");
+				ENABLE_PREVIEWS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B1BC557AA7764E7D83C4E657 /* Build configuration list for PBXProject "AtHome" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD946FF4C4FC425881286446 /* Debug */,
+				A2C704CAC1504C8E82AB3B37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		079FBDBA73E14A41B944A656 /* Build configuration list for PBXNativeTarget "AtHome" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7001917CE8C842CABCCE0F79 /* Debug */,
+				1F314AC1917D4A259B9A1335 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5DD205824212429ABF68659B /* Project object */;
+}

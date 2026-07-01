@@ -51,3 +51,5 @@ env/
 *.log
 .env
 .env.local
+server/data/*
+!server/data/.gitkeep

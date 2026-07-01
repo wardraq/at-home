@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AtHome Admin</title>
+  <style>
+    :root { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #1a1a1a; }
+    body { margin: 0; padding: 24px; background: #f6f7f9; }
+    h1 { margin: 0 0 8px; font-size: 1.5rem; }
+    .sub { color: #666; margin-bottom: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .card { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    .card h2 { margin: 0 0 12px; font-size: 1rem; }
+    .row { display: flex; gap: 8px; margin-top: 8px; }
+    input[type=text] { flex: 1; padding: 8px 10px; border: 1px solid #ccc; border-radius: 8px; }
+    button { padding: 8px 12px; border: 0; border-radius: 8px; background: #2563eb; color: #fff; cursor: pointer; }
+    button.secondary { background: #e5e7eb; color: #111; }
+    button.danger { background: #dc2626; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { text-align: left; padding: 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85rem; word-break: break-all; }
+    .qr { margin-top: 8px; }
+    .error { color: #dc2626; margin-top: 8px; }
+    .muted { color: #666; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <h1>AtHome 接收端</h1>
+  <p class="sub">Admin 控制台（仅本机访问）</p>
+
+  <div class="grid">
+    <div class="card">
+      <h2>服务状态</h2>
+      <div id="status">加载中...</div>
+    </div>
+    <div class="card">
+      <h2>存储路径</h2>
+      <div class="row">
+        <input id="storagePath" type="text" placeholder="/path/to/photos">
+        <button onclick="saveSettings()">保存</button>
+      </div>
+      <div id="settingsMsg" class="muted"></div>
+    </div>
+    <div class="card">
+      <h2>创建用户</h2>
+      <div class="row">
+        <input id="userName" type="text" placeholder="用户名（不可改）">
+        <button onclick="createUser()">创建</button>
+      </div>
+      <div id="createMsg" class="muted"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom: 24px;">
+    <h2>用户列表</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>名称</th>
+          <th>userId</th>
+          <th>状态</th>
+          <th>资产数</th>
+          <th>最后上传</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="usersBody"></tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>最近上传</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>用户</th>
+          <th>路径</th>
+          <th>版本</th>
+          <th>大小</th>
+          <th>时间</th>
+        </tr>
+      </thead>
+      <tbody id="uploadsBody"></tbody>
+    </table>
+  </div>
+
+  <script>
+    async function api(path, options = {}) {
+      const res = await fetch(path, {
+        headers: { "Content-Type": "application/json", ...(options.headers || {}) },
+        ...options,
+      });
+      const data = await res.json();
+      if (!res.ok || data.status === "error") {
+        throw new Error(data.message || res.statusText);
+      }
+      return data;
+    }
+
+    function formatBytes(n) {
+      if (n == null) return "-";
+      const units = ["B", "KB", "MB", "GB"];
+      let i = 0, v = n;
+      while (v >= 1024 && i < units.length - 1) { v /= 1024; i++; }
+      return `${v.toFixed(1)} ${units[i]}`;
+    }
+
+    async function loadStatus() {
+      const data = await api("/admin/status");
+      document.getElementById("status").innerHTML = `
+        <div><strong>serverId</strong><div class="mono">${data.serverId}</div></div>
+        <div style="margin-top:8px"><strong>手机 API</strong><div class="mono">${data.apiAddr}</div></div>
+        <div style="margin-top:8px"><strong>存储路径</strong><div class="mono">${data.storagePath}</div></div>
+        <div style="margin-top:8px"><strong>磁盘剩余</strong> ${formatBytes(data.diskFreeBytes)}</div>
+        <div style="margin-top:8px"><strong>运行时间</strong> ${data.uptime}s</div>
+      `;
+      document.getElementById("storagePath").value = data.storagePath;
+    }
+
+    async function loadUsers() {
+      const data = await api("/admin/users");
+      const body = document.getElementById("usersBody");
+      body.innerHTML = "";
+      for (const user of data.users) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${user.name}</td>
+          <td class="mono">${user.userId}</td>
+          <td>${user.status}</td>
+          <td>${user.assetCount ?? 0}</td>
+          <td>${user.lastUploadAt || "-"}</td>
+          <td>
+            <button class="secondary" onclick="showQr('${user.userId}')">QR</button>
+            ${user.status === "active" ? `<button class="danger" onclick="revokeUser('${user.userId}')">吊销</button>` : ""}
+          </td>
+        `;
+        body.appendChild(tr);
+      }
+    }
+
+    async function loadUploads() {
+      const data = await api("/admin/uploads/recent?limit=20");
+      const body = document.getElementById("uploadsBody");
+      body.innerHTML = "";
+      for (const row of data.uploads) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${row.userName}</td>
+          <td class="mono">${row.path}</td>
+          <td>v${row.version} (${row.part})</td>
+          <td>${formatBytes(row.fileSize)}</td>
+          <td>${row.uploadedAt}</td>
+        `;
+        body.appendChild(tr);
+      }
+    }
+
+    async function createUser() {
+      const name = document.getElementById("userName").value.trim();
+      const msg = document.getElementById("createMsg");
+      msg.textContent = "";
+      if (!name) { msg.textContent = "请输入用户名"; return; }
+      try {
+        const data = await api("/admin/users", { method: "POST", body: JSON.stringify({ name }) });
+        msg.textContent = `已创建 ${data.name}，userId: ${data.userId}`;
+        document.getElementById("userName").value = "";
+        await refresh();
+        showQr(data.userId);
+      } catch (e) {
+        msg.textContent = e.message;
+      }
+    }
+
+    async function revokeUser(userId) {
+      if (!confirm("确定吊销该用户？")) return;
+      await api(`/admin/users/${userId}`, { method: "DELETE" });
+      await refresh();
+    }
+
+    function showQr(userId) {
+      const existing = document.getElementById("qrBox");
+      if (existing) existing.remove();
+      const box = document.createElement("div");
+      box.id = "qrBox";
+      box.className = "card qr";
+      box.innerHTML = `<h2>配对二维码</h2><img src="/admin/users/${userId}/qrcode" alt="QR"><p class="muted mono">${userId}</p>`;
+      document.body.appendChild(box);
+      box.scrollIntoView({ behavior: "smooth" });
+    }
+
+    async function saveSettings() {
+      const storagePath = document.getElementById("storagePath").value.trim();
+      const msg = document.getElementById("settingsMsg");
+      try {
+        await api("/admin/settings", { method: "PUT", body: JSON.stringify({ storagePath }) });
+        msg.textContent = "已保存";
+        await loadStatus();
+      } catch (e) {
+        msg.textContent = e.message;
+      }
+    }
+
+    async function refresh() {
+      await Promise.all([loadStatus(), loadUsers(), loadUploads()]);
+    }
+
+    refresh().catch(err => {
+      document.getElementById("status").innerHTML = `<span class="error">${err.message}</span>`;
+    });
+  </script>
+</body>
+</html>
